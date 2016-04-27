@@ -5,8 +5,7 @@
   "scripts": {
     "start": "node server.js",
     "monitor": "nodemon server.js",
-    "deploy": "gcloud preview app deploy",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "deploy": "gcloud preview app deploy"
   },
   "author": "Allan Garcia",
   "license": "ISC",
