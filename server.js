@@ -9,7 +9,7 @@ app.use('/public', express.static('public'));
 
 // Exposing methods
 app.get('/', (req, res) => {
-  res.status(200).send("Hello World!");
+  res.status(200).send("Sistema de controle e monitoramento das VM do curso de Tecnologia em Informática para Internet.");
 });
 
 // Handling server error (500)
@@ -25,5 +25,5 @@ app.use((req, res, next) => {
 
 // Exposing service on port 7000
 app.listen(8080, () => {
-  console.log("Server running at http://localhost:7000/");
+  console.log("Server running at http://localhost:8080/");
 });

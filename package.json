@@ -1,7 +1,7 @@
 {
   "name": "nodesentry",
   "version": "1.0.0",
-  "description": "Programa sentinela para gerenciamento do laboratório distribuído do IFRN-EaD.",
+  "description": "Sistema de controle e monitoramento das VM do curso de Tecnologia em Informática para Internet.",
   "scripts": {
     "start": "node server.js",
     "monitor": "nodemon server.js",

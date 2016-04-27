@@ -3,7 +3,7 @@ const fs = require('fs');
 const http = require('http');
 const dateformatter = require('date-format');
 
-const downloadClientUrl = "http://localhost:8080/public/client.js";
+const downloadClientUrl = "http://node-sentry.appspot.com/public/client.js";
 const downloadClientFile = "client.js";
 
 function formattedDate() {
