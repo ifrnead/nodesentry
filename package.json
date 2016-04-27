@@ -2,9 +2,11 @@
   "name": "nodesentry",
   "version": "1.0.0",
   "description": "Programa sentinela para gerenciamento do laboratório distribuído do IFRN-EaD.",
-  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "monitor": "nodemon server.js",
+    "deploy": "gcloud preview app deploy"
   },
   "keywords": [
     "sentinela",
@@ -17,5 +19,8 @@
   "dependencies": {
     "date-format": "0.0.2",
     "express": "^4.13.4"
-  }
+  },
+  "engines": {
+    "node": "~5.0"
+  },
 }
