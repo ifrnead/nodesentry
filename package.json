@@ -3,17 +3,11 @@
   "version": "1.0.0",
   "description": "Programa sentinela para gerenciamento do laboratório distribuído do IFRN-EaD.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "monitor": "nodemon server.js",
-    "deploy": "gcloud preview app deploy"
+    "deploy": "gcloud preview app deploy",
+    "test": "echo \"Error: no test specified\" && exit 1",
   },
-  "keywords": [
-    "sentinela",
-    "nodejs",
-    "ifrn",
-    "ead"
-  ],
   "author": "Allan Garcia",
   "license": "ISC",
   "dependencies": {
@@ -22,5 +16,5 @@
   },
   "engines": {
     "node": "~6.0"
-  },
+  }
 }
