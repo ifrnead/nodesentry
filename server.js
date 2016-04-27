@@ -24,6 +24,6 @@ app.use((req, res, next) => {
 });
 
 // Exposing service on port 7000
-app.listen(7000, () => {
+app.listen(8080, () => {
   console.log("Server running at http://localhost:7000/");
 });

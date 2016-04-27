@@ -14,9 +14,6 @@
 # [START app_yaml]
 runtime: nodejs
 vm: true
-network:
-  forwarded_ports:
-  - 7000
 
 skip_files:
   - ^(.*/)?.*/node_modules/.*$

@@ -1,7 +1,7 @@
 'use strict';
 const http = require('http');
 
-http.get("http://localhost:7000/public/test.xml", (res) => {
+http.get("http://localhost:8080/public/test.xml", (res) => {
   console.log("Cliente conectou no servidor.");
   console.log(res.headers);
   console.log(res.statusCode);

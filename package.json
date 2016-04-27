@@ -12,5 +12,8 @@
   "dependencies": {
     "date-format": "0.0.2",
     "express": "^4.13.4"
+  },
+  "engines": {
+    "node": "~6.0.0"
   }
 }
