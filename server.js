@@ -23,7 +23,7 @@ app.use((req, res, next) => {
   res.status(404).send('Sorry can\'t find that!');
 });
 
-// Exposing service on port 7000
+// Exposing service on port 8080
 app.listen(8080, () => {
   console.log("Server running at http://localhost:8080/");
 });
