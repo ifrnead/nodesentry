@@ -11,7 +11,9 @@
   "license": "ISC",
   "dependencies": {
     "date-format": "0.0.2",
-    "express": "^4.13.4"
+    "express": "^4.13.4",
+    "gcloud": "^0.34.0",
+    "node-uuid": "^1.4.7"
   },
   "engines": {
     "node": "~6.0.0"

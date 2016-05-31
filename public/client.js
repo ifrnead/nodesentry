@@ -13,3 +13,11 @@ http.get("http://node-sentry.appspot.com/public/test.xml", (res) => {
 }).on('error', (error) => {
   console.log(`Got error: ${error.message}`);
 });
+
+/*
+1.  Verificar se existe um arquivo de id no diretorio
+2. Se não existir requisitar o id via rest-api-/ping e guardar o resultado
+   no arquivo id
+3. Se existir o arquivo chamar o rest-api-/ping/id e guardar o resultado no
+   log
+*/
