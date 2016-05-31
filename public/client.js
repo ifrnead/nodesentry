@@ -1,18 +1,16 @@
 'use strict';
-const http = require('http');
+const http = require('http')
+const fs = require('fs')
+const dateformatter = require('date-format');
 
-http.get("http://node-sentry.appspot.com/public/test.xml", (res) => {
-  console.log("Cliente conectou no servidor.");
-  console.log(res.headers);
-  console.log(res.statusCode);
-  console.log(res.statusMessage);
-  console.log(res.url);
-  res.on('data', (chunk) => {
-    console.log(`BODY: ${chunk}`);
-  });
-}).on('error', (error) => {
-  console.log(`Got error: ${error.message}`);
-});
+function formattedDate() {
+  return dateformatter.asString(Date())
+}
+
+function log(text) {
+  let datetime = formattedDate()
+  console.log(`(${datetime}) ${text}`)
+}
 
 /*
 1.  Verificar se existe um arquivo de id no diretorio
@@ -21,3 +19,58 @@ http.get("http://node-sentry.appspot.com/public/test.xml", (res) => {
 3. Se existir o arquivo chamar o rest-api-/ping/id e guardar o resultado no
    log
 */
+
+let file = "id.json"
+
+fs.stat(file, (err, stats) => {
+  if (!err) && (stats.isFile()) {
+    var obj = JSON.parse(fs.readFileSync(machineFile))
+
+    let uuid = obj.uuid
+
+    let url = 'http://node-sentry.appspot.com/ping/' + uuid
+
+    http.get(url, (res) => {
+      console.log("Cliente conectou no servidor.")
+      console.log(res.headers)
+      console.log(res.statusCode)
+      console.log(res.statusMessage)
+      console.log(res.url)
+      res.on('data', (chunk) => {
+        console.log(`BODY: ${chunk}`)
+      })
+    }).on('error', (error) => {
+      console.log(`Got error: ${error.message}`)
+    })
+
+  } else {
+
+    let url = 'http://node-sentry.appspot.com/ping/'
+
+    http.get(url, (res) => {
+      console.log("Cliente conectou no servidor.")
+      console.log(res.headers)
+      console.log(res.statusCode)
+      console.log(res.statusMessage)
+      console.log(res.url)
+      res.on('data', (chunk) => {
+        console.log(`BODY: ${chunk}`)
+
+        // salvar o arquivo
+        var obj = JSON.parse(chunk)
+        var str = JSON.stringify(obj)
+
+        fs.writeFile(file, str, function(err) {
+          if(err) {
+            return console.log(err);
+          }
+          console.log("The file was saved!");
+        })
+
+      })
+    }).on('error', (error) => {
+      console.log(`Got error: ${error.message}`)
+    })
+
+  }
+})
