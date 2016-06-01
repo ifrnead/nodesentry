@@ -25,7 +25,7 @@ app.get('/ping/:id', (req, res) => {
 
   let now = new Date().toJSON()
   let req_id = req.params.id
-  let req_ip = req.ip
+  let req_ip = [req.ip, req.ips]
 
   console.log("Got request at: '" + now + "' of id: '" + req_id + "' from ip: '" + req_ip + "'")
 
