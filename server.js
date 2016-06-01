@@ -37,8 +37,8 @@ app.get('/ping/:id', (req, res) => {
     if (!err) {
       if (results.length == 1) {
 
-        let machine = results[0]
-        let entity_uuid = machine.key.id
+        let result = results[0]
+        let entity_uuid = result.data.uuid
 
         var key = ds.key('PingEntry')
         var data = {
@@ -52,14 +52,16 @@ app.get('/ping/:id', (req, res) => {
           data: data
         }, (err) => {
           if (!err) {
-            res.json([key, data])
+            res.json({
+              key: key,
+              data: data
+            })
             console.log("This request was delivered.")
           } else {
             res.json({})
             console.log("Failed with error: " + err)
           }
         })
-
 
       } else {
         res.json({})

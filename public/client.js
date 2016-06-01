@@ -23,8 +23,8 @@ function log(text) {
 let file = "id.json"
 
 fs.stat(file, (err, stats) => {
-  if (!err) && (stats.isFile()) {
-    var obj = JSON.parse(fs.readFileSync(machineFile))
+  if (!err && stats.isFile()) {
+    var obj = JSON.parse(fs.readFileSync(file))
 
     let uuid = obj.uuid
 
@@ -45,7 +45,7 @@ fs.stat(file, (err, stats) => {
 
   } else {
 
-    let url = 'http://node-sentry.appspot.com/ping/'
+    let url = 'http://node-sentry.appspot.com/ping'
 
     http.get(url, (res) => {
       console.log("Cliente conectou no servidor.")
@@ -60,8 +60,8 @@ fs.stat(file, (err, stats) => {
         var obj = JSON.parse(chunk)
         var str = JSON.stringify(obj)
 
-        fs.writeFile(file, str, function(err) {
-          if(err) {
+        fs.writeFile(file, str, (err) => {
+          if (err) {
             return console.log(err);
           }
           console.log("The file was saved!");
