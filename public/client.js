@@ -20,24 +20,18 @@ function log(text) {
    log
 */
 
-let home = process.env.HOME
-
-if (!fs.existsSync(home)){
-    console.log("HomeDir not existant")
+// Temporary
+if (fs.existsSync("id.json")){
+    fs.unlinkSync("id.json")
 }
 
-let configdir = home + '/.nodesentry'
+let configdir = '/home/alumni/.nodesentry'
 
 if (!fs.existsSync(configdir)){
     fs.mkdirSync(configdir);
 }
 
 let file = configdir + "/id.json"
-
-// Temporary
-if (fs.existsSync("id.json")){
-    fs.unlinkSync("id.json")
-}
 
 fs.stat(file, (err, stats) => {
   if (!err && stats.isFile()) {
