@@ -20,7 +20,24 @@ function log(text) {
    log
 */
 
-let file = "id.json"
+let home = process.env.HOME
+
+if (!fs.existsSync(home)){
+    console.log("HomeDir not existant")
+}
+
+let configdir = home + '/.nodesentry'
+
+if (!fs.existsSync(configdir)){
+    fs.mkdirSync(configdir);
+}
+
+let file = configdir + "/id.json"
+
+// Temporary
+if (fs.existsSync("id.json")){
+    fs.unlinkSync("id.json")
+}
 
 fs.stat(file, (err, stats) => {
   if (!err && stats.isFile()) {
@@ -32,10 +49,6 @@ fs.stat(file, (err, stats) => {
 
     http.get(url, (res) => {
       console.log("Cliente conectou no servidor.")
-      console.log(res.headers)
-      console.log(res.statusCode)
-      console.log(res.statusMessage)
-      console.log(res.url)
       res.on('data', (chunk) => {
         console.log(`BODY: ${chunk}`)
       })
@@ -49,10 +62,6 @@ fs.stat(file, (err, stats) => {
 
     http.get(url, (res) => {
       console.log("Cliente conectou no servidor.")
-      console.log(res.headers)
-      console.log(res.statusCode)
-      console.log(res.statusMessage)
-      console.log(res.url)
       res.on('data', (chunk) => {
         console.log(`BODY: ${chunk}`)
 

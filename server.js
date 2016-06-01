@@ -8,9 +8,12 @@ var app = express()
 
 // Database initialization
 var ds = gcloud.datastore({
-  projectId: 'node-sentry',
-  keyFilename: 'service.json'
+  projectId: 'node-sentry'
+  // keyFilename: 'service.json'
 })
+
+// App configuration
+app.enable('trust proxy')
 
 // Handling static contents
 app.use('/public', express.static('public'))
@@ -25,7 +28,8 @@ app.get('/ping/:id', (req, res) => {
 
   let now = new Date().toJSON()
   let req_id = req.params.id
-  let req_ip = [req.ip, req.ips]
+  let req_ip = req.ip
+  let req_ips = req.ips
 
   console.log("Got request at: '" + now + "' of id: '" + req_id + "' from ip: '" + req_ip + "'")
 
@@ -44,6 +48,7 @@ app.get('/ping/:id', (req, res) => {
         var data = {
           uuid: entity_uuid,
           ip: req_ip,
+          ips: req_ips,
           created_at: now
         }
 
