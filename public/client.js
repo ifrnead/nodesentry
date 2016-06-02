@@ -42,7 +42,7 @@ fs.stat(file, (err, stats) => {
     let url = 'http://node-sentry.appspot.com/ping/' + uuid
 
     http.get(url, (res) => {
-      console.log("Cliente conectou no servidor.")
+      console.log("Requisitando a url " + url)
       res.on('data', (chunk) => {
         console.log(`BODY: ${chunk}`)
       })
@@ -55,7 +55,7 @@ fs.stat(file, (err, stats) => {
     let url = 'http://node-sentry.appspot.com/ping'
 
     http.get(url, (res) => {
-      console.log("Cliente conectou no servidor.")
+      console.log("Requisitando a url " + url)
       res.on('data', (chunk) => {
         console.log(`BODY: ${chunk}`)
 

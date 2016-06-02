@@ -28,8 +28,7 @@ app.get('/ping/:id', (req, res) => {
 
   let now = new Date().toJSON()
   let req_id = req.params.id
-  let req_ip = req.ip
-  let req_ips = req.ips
+  let req_headers = req.headers
 
   console.log("Got request at: '" + now + "' of id: '" + req_id + "' from ip: '" + req_ip + "'")
 
@@ -47,8 +46,7 @@ app.get('/ping/:id', (req, res) => {
         var key = ds.key('PingEntry')
         var data = {
           uuid: entity_uuid,
-          ip: req_ip,
-          ips: req_ips,
+          headers: req_headers,
           created_at: now
         }
 
