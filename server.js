@@ -30,7 +30,7 @@ app.get('/ping/:id', (req, res) => {
   let req_id = req.params.id
   let req_headers = req.headers
 
-  console.log("Got request at: '" + now + "' of id: '" + req_id + "' from ip: '" + req_ip + "'")
+  console.log("Got request at: '" + now + "' of id: '" + req_id + "'")
 
   var query = ds.createQuery('PingMachine')
     .filter('uuid', '=', req_id)
